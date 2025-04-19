@@ -6,29 +6,32 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <h1 className="page-title">RFitnessPal</h1>
+      <h2 className="page-title">Select your meal!</h2>
+      <div className="restaurant-dropdown-container">
+        <select defaultValue="default" className="restaurant-dropdown">
+          <option value="default" disabled>
+            Select a restaurant
+          </option>
+          <option value="glasgow">Glasgow</option>
+          <option value="lothian">Lothian</option>
+        </select>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      {/* GET MEALS HERE */}
+      <div className="meal-dropdown-container">
+        <select defaultValue="default" className="meal-dropdown">
+          <option value="default" disabled>
+            Select a meal
+          </option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
   )
 }
 
