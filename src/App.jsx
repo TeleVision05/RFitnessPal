@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+<<<<<<< HEAD
   const [selectedRestaurant, setSelectedRestaurant] = useState('');
   const [selectedMeal, setSelectedMeal] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -9,6 +10,9 @@ function App() {
   const [cppOutput, setCppOutput] = useState('');
   const [emscriptenModule, setEmscriptenModule] = useState(null);
 
+=======
+  const [count, setCount] = useState(0)
+>>>>>>> parent of 418804c (Updates to the UI)
   const dietaryOptions = [
     'Vegetarian', 'Vegan', 'Gluten Free', 'No Milk',
     'No eggs', 'No Fish', 'No Shellfish', 'No Tree Nuts',
@@ -23,6 +27,7 @@ function App() {
     );
   };
 
+<<<<<<< HEAD
   // ✅ Load Emscripten Module
   useEffect(() => {
     const loadModule = async () => {
@@ -80,11 +85,14 @@ function App() {
     mod._free(argvPtr);
   };
 
+=======
+>>>>>>> parent of 418804c (Updates to the UI)
   return (
     <div className="App">
-      <img src="/src/assets/UC_Riverside_logo.svg.png" alt="UC Riverside Logo" className="page-logo"/>
       <h1 className="page-title">R'FitnessPal</h1>
+      <img src="/src/assets/UC_Riverside_logo.svg.png" alt="UC Riverside Logo" className="page-logo"/>
       <h2 className="page-title">Select your meal!</h2>
+<<<<<<< HEAD
 
       <div className="dropdown-container">
         <select
@@ -95,6 +103,15 @@ function App() {
           <option value="" disabled>Select a restaurant</option>
           <option value="Glasgow">Glasgow</option>
           <option value="Lothian">Lothian</option>
+=======
+      <div className="dropdown-container">
+        <select defaultValue="default" className="styled-dropdown">
+          <option value="default" disabled>
+            Select a restaurant
+          </option>
+          <option value="glasgow">Glasgow</option>
+          <option value="lothian">Lothian</option>
+>>>>>>> parent of 418804c (Updates to the UI)
         </select>
       </div>
 
@@ -114,6 +131,18 @@ function App() {
       {selectedRestaurant && <p>Restaurant: {selectedRestaurant}</p>}
       {selectedMeal && <p>Meal: {selectedMeal}</p>}
 
+=======
+        <select defaultValue="default" className="styled-dropdown">
+          <option value="default" disabled>
+            Select a meal
+          </option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+      </div>
+
+      {/* Dietary options section */}
+>>>>>>> parent of 418804c (Updates to the UI)
       <div className="dietary-options-container">
         {dietaryOptions.map((label, index) => (
           <label key={index} className="dietary-option-label">
@@ -127,6 +156,7 @@ function App() {
           </label>
         ))}
       </div>
+<<<<<<< HEAD
 
       <div className="ingredient-input-container">
         <label htmlFor="data-input">Enter values (comma-separated):</label>
@@ -146,6 +176,8 @@ function App() {
           </div>
         )}
       </div>
+=======
+>>>>>>> parent of 418804c (Updates to the UI)
     </div>
   );
 }
