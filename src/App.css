@@ -3,7 +3,6 @@ html, body {
   margin: 0;
   padding: 0;
   height: fit-content;
-  color: black;
 }
 
 #root {
@@ -46,10 +45,6 @@ html, body {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-}
-
-.p{
-  color: black;
 }
 
 .body {
@@ -126,37 +121,4 @@ html, body {
 .dietary-option-checkbox:checked {
   background-color: orange;
   border-color: orange;
-}
-
-.ingredient-input-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 20px auto;
-  max-width: 400px;
-  color: white;
-}
-
-#data-input {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid orange;
-  color:black;
-  background-color: white;
-}
-
-.submit-button {
-  background-color: cornflowerblue; /* blue */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.submit-button:hover {
-  background-color: #0056b3; /* darker blue on hover */
 }

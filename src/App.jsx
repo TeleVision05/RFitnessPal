@@ -99,6 +99,7 @@ function App() {
       </div>
 
       <div className="dropdown-container">
+<<<<<<< HEAD
         <select
           value={selectedMeal}
           onChange={(e) => setSelectedMeal(e.target.value)}
