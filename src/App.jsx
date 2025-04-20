@@ -9,8 +9,17 @@ function App() {
     'Vegetarian', 'Vegan', 'Gluten Free', 'No Milk',
     'No eggs', 'No Fish', 'No Shellfish', 'No Tree Nuts',
     'No Peanuts', 'No Wheat', 'No Soybean', 'No Seasme',
-    'No Pork', 'No Beef'
   ]
+
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleCheckboxChange = (option) => {
+    setSelectedOptions(prev =>
+      prev.includes(option)
+        ? prev.filter(item => item !== option)
+        : [...prev, option]
+    );
+  };
 
   return (
     <div className="App">
@@ -42,7 +51,12 @@ function App() {
       <div className="dietary-options-container">
         {dietaryOptions.map((label, index) => (
           <label key={index} className="dietary-option-label">
-            <input type="checkbox" className="dietary-option-checkbox" />
+            <input
+              type="checkbox"
+              className="dietary-option-checkbox"
+              checked={selectedOptions.includes(label)}
+              onChange={() => handleCheckboxChange(label)}
+            />
             {label}
           </label>
         ))}
