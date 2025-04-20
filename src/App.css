@@ -217,6 +217,6 @@ div.plate {
   border: 1px solid #ccc;
   border-radius: 8px;
   z-index: 1000;
-  width: 20vw;
-  height: 90%;
+  width: auto;
+  height: 70%;
 }

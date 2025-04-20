@@ -141,9 +141,28 @@ function App() {
 
   return (
     <div className="App">
-
       <div className='plate'>
-        <div className="scrollable-table-container" style={{ maxHeight: 'auto', overflowY: 'auto', marginTop: '1rem', border: '1px solid #ccc', padding: '1rem' }}>
+        <span>Plate {}</span>
+        <div className="food-tile" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem', padding: '1rem', border: '1px solid #ddd', borderRadius: '5px', backgroundColor: '#f9f9f9', flexDirection: 'column' }}>
+            <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>Nutritional Summary</h3>
+            {plateFoods && plateFoods.length > 0 ? (
+              <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <span>Total Calories: {plateFoods.reduce((total, food) => total + (parseFloat(food.calories) * parseFloat(food.count)), 0).toFixed(2)}</span>
+                <span>Total Protein: {plateFoods.reduce((total, food) => total + (parseFloat(food.protein) * parseFloat(food.count)), 0).toFixed(2)}g</span>
+                <span>Total Carbohydrates: {plateFoods.reduce((total, food) => total + (parseFloat(food.carbohydrates || 0) * parseFloat(food.count)), 0).toFixed(2)}g</span>
+                <span>Total Fat: {plateFoods.reduce((total, food) => total + (parseFloat(food.fat || 0) * parseFloat(food.count)), 0).toFixed(2)}g</span>
+              </div>
+            ) : (
+              <p style={{ textAlign: 'center', color: '#888' }}>No nutritional data to display</p>
+            )}
+        </div>
+        <button 
+            style={{ flex: 1, textAlign: 'center', padding: '0.5rem', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+            onClick={() => setPlateFoods([])}
+          >
+            Clear
+        </button>
+        <div className="scrollable-table-container" style={{ maxHeight: '60%', overflowY: 'auto', marginTop: '1rem', border: '1px solid #ccc', padding: '1rem' }}>
           {plateFoods && plateFoods.length > 0 ? (
             plateFoods.map((food, index) => (
               <div key={index} className="food-tile" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', padding: '1rem', border: '1px solid #ddd', borderRadius: '5px', backgroundColor: '#f9f9f9' }}>
@@ -161,7 +180,7 @@ function App() {
               </div>
             ))
           ) : (
-            <p style={{ textAlign: 'center', color: '#888' }}>No foods to display</p>
+            <p style={{ textAlign: 'center', color: '#888' }}>No food in plate</p>
           )}
         </div>
       </div>
