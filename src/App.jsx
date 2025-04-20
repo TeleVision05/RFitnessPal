@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [selectedRestaurant, setSelectedRestaurant] = useState('');
+  const [selectedMeal, setSelectedMeal] = useState('');
   const [count, setCount] = useState(0)
   const dietaryOptions = [
     'Vegetarian', 'Vegan', 'Gluten Free', 'No Milk',
@@ -37,8 +39,9 @@ function App() {
       <h1 className="page-title">R'FitnessPal</h1>
       <img src="/src/assets/UC_Riverside_logo.svg.png" alt="UC Riverside Logo" className="page-logo"/>
       <h2 className="page-title">Select your meal!</h2>
+
       <div className="dropdown-container">
-        <select defaultValue="default" className="styled-dropdown">
+        <select value={selectedRestaurant} onChange={(e) => setSelectedRestaurant(e.target.value)} className="styled-dropdown">
           <option value="default" disabled>
             Select a restaurant
           </option>
@@ -48,7 +51,7 @@ function App() {
       </div>
 
       <div className="dropdown-container">
-        <select defaultValue="default" className="styled-dropdown">
+        <select value={selectedMeal} onChange={(e) => setSelectedMeal(e.target.value)} className="styled-dropdown">
           <option value="default" disabled>
             Select a meal
           </option>
