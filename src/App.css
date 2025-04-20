@@ -2,7 +2,7 @@ html, body {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: fit-content;
 }
 
 #root {
@@ -61,8 +61,16 @@ html, body {
   color: #ffffff;
 }
 
+.page-title {
+  color: black;
+}
+
+.page-logo {
+  width: 780px;
+}
+
 .dropdown-container {
-  background-color: #888;
+  background-color: blue;
   padding: 20px;
   border-radius: 10px;
   width: fit-content;
@@ -73,8 +81,44 @@ html, body {
   font-size: 16px;
   padding: 8px 12px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid orange;
   outline: none;
-  background-color: #85929e;
+  background-color: orange;
   color: #000;
+}
+
+.dietary-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.dietary-options-container {
+  background-color: blue;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: fit-content;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.dietary-option-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff; /* blue border */
+  background-color: #007bff;  /* blue background when unchecked */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dietary-option-checkbox:checked {
+  background-color: orange;
+  border-color: orange;
 }
