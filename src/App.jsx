@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { getFoods } from './assets/utils';
 
 function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState('default');
@@ -11,8 +12,8 @@ function App() {
 
   const dietaryOptions = [
     'Vegetarian', 'Vegan', 'Gluten Free', 'No Milk',
-    'No eggs', 'No Fish', 'No Shellfish', 'No Tree Nuts',
-    'No Peanuts', 'No Wheat', 'No Soybean', 'No Seasme',
+    'No Eggs', 'No Fish', 'No Shellfish', 'No Tree Nuts',
+    'No Peanuts', 'No Wheat', 'No Soybean', 'No Sesame',
   ];
 
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -29,12 +30,17 @@ function App() {
   const [storedValues, setStoredValues] = useState([]);
 
   const storeValues = () => {
-    const values = inputText
-      .split(',')
-      .map(val => val.trim())
-      .filter(val => val.length > 0);
+    const values = inputText.includes(',')
+      ? inputText
+        .split(',')
+        .map(val => val.trim())
+        .filter(val => val.length > 0)
+      : [inputText.trim()].filter(val => val.length > 0);
     setStoredValues(values);
     console.log('Stored values:', values);
+
+    // Call the external function with the selected values
+    console.log(getFoods(selectedRestaurant, selectedMeal, selectedOptions, storedValues));
   };
 
   useEffect(() => {
@@ -80,13 +86,13 @@ function App() {
       <h2 className="page-title">Select your meal!</h2>
 
       <div className="dropdown-container">
-      <select value={selectedRestaurant} onChange={(e) => setSelectedRestaurant(e.target.value)} className="styled-dropdown">
-        <option value="default" disabled>
-          Select a restaurant
-        </option>
-        <option value="glasgow">Glasgow</option>
-        <option value="lothian">Lothian</option>
-      </select>
+        <select value={selectedRestaurant} onChange={(e) => setSelectedRestaurant(e.target.value)} className="styled-dropdown">
+          <option value="default">
+            Select a restaurant
+          </option>
+          <option value="glasgow">Glasgow</option>
+          <option value="lothian">Lothian</option>
+        </select>
       </div>
 
       {cppOutput && (
@@ -97,11 +103,11 @@ function App() {
 
       <div className="dropdown-container">
         <select value={selectedMeal} onChange={(e) => setSelectedMeal(e.target.value)} className="styled-dropdown">
-          <option value="default" disabled>
+          <option value="default">
             Select a meal
           </option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
         </select>
       </div>
 
