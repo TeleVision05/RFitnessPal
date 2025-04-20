@@ -235,7 +235,7 @@ function App() {
           style={{ resize: 'none', marginTop: '1rem' }}
         />
       </div> */}
-      <div className="scrollable-table-container" style={{ maxHeight: '300px', overflowY: 'auto', marginTop: '1rem', border: '1px solid #ccc', padding: '1rem' }}>
+      <div className="scrollable-table-container" style={{ maxHeight: '300px', maxWidth: '300px', overflowY: 'auto', marginTop: '1rem', marginLeft: '14rem', marginRight: '13rem', border: '1px solid #ccc', padding: '1rem' }}>
         {foods && foods.length > 0 ? (
           foods.map((food, index) => (
             <div key={index} className="food-tile" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', padding: '1rem', border: '1px solid #ddd', borderRadius: '5px', backgroundColor: '#f9f9f9' }}>
