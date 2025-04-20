@@ -4,6 +4,7 @@ html, body {
   padding: 0;
   height: fit-content;
   color: black;
+  width: 100%;
 }
 
 #root {
@@ -11,7 +12,7 @@ html, body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .logo {
@@ -46,6 +47,7 @@ html, body {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .body {
@@ -71,8 +73,8 @@ html, body {
 }
 
 .dropdown-container {
-  background-color: blue;
-  padding: 20px;
+  background-color: rgb(0, 0, 0);
+  padding: 8px;
   border-radius: 10px;
   width: fit-content;
   margin: 20px auto;
@@ -106,21 +108,27 @@ html, body {
 }
 
 .dietary-options-container {
-  background-color: blue;
+  gap: 10px;
+  margin: 20px auto;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: black;
+}
+
+.dietary-options {
+  background-color: rgb(0, 0, 255);
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  width: fit-content;
-  margin: 20px auto;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .dietary-option-checkbox {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #007bff; /* blue border */
+  border: 2px solid #000000; /* black border */
   background-color: #007bff;  /* blue background when unchecked */
   border-radius: 4px;
   cursor: pointer;
@@ -129,7 +137,7 @@ html, body {
 
 .dietary-option-checkbox:checked {
   background-color: orange;
-  border-color: orange;
+  border-color: rgb(0, 0, 0);
 }
 
 .ingredient-input-container {
@@ -163,4 +171,42 @@ html, body {
 
 .submit-button:hover {
   background-color: #0056b3; /* darker blue on hover */
+}
+
+
+iframe.shim {
+  width:            100%;
+  height:           100%;
+  position:         absolute;
+  left:             0px;
+  top:              0px;
+  z-index:          100;
+  background-color: #fff;
+  opacity:          0.8;                 /* Standard */
+  filter:           alpha(opacity = 50); /* For IE */
+}
+
+div.overlay {
+  z-index: 101;
+  border: 1px solid black;
+  background-color: rgb(226, 143, 143);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 10px;
+}
+
+div.plate {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f1f1f1;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  z-index: 1000;
+  width: 20vw;
+  height: 90%;
 }
