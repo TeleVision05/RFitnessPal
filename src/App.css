@@ -1,8 +1,16 @@
+html, body {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 1920px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: white;
 }
 
 .logo {
@@ -33,10 +41,40 @@
   }
 }
 
+.App{
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
 .card {
   padding: 2em;
 }
 
 .read-the-docs {
-  color: #888;
+  color: #ffffff;
+}
+
+.dropdown-container {
+  background-color: #888;
+  padding: 20px;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.styled-dropdown {
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: #85929e;
+  color: #000;
 }

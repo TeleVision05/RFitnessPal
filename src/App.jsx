@@ -7,16 +7,17 @@ function App() {
   const [count, setCount] = useState(0)
   const dietaryOptions = [
     'Vegetarian', 'Vegan', 'Gluten Free', 'No Milk',
-    'No eggs', 'No Fish', 'Vegan', 'Vegan',
-    'Vegetarian', 'Vegan', 'Vegan', 'Vegan'
+    'No eggs', 'No Fish', 'No Shellfish', 'No Tree Nuts',
+    'No Peanuts', 'No Wheat', 'No Soybean', 'No Seasme',
+    'No Pork', 'No Beef'
   ]
 
   return (
     <div className="App">
-      <h1 className="page-title">RFitnessPal</h1>
+      <h1 className="page-title">R*FitnessPal</h1>
       <h2 className="page-title">Select your meal!</h2>
-      <div className="restaurant-dropdown-container">
-        <select defaultValue="default" className="restaurant-dropdown">
+      <div className="dropdown-container">
+        <select defaultValue="default" className="styled-dropdown">
           <option value="default" disabled>
             Select a restaurant
           </option>
@@ -26,8 +27,8 @@ function App() {
       </div>
 
       {/* GET MEALS HERE */}
-      <div className="meal-dropdown-container">
-        <select defaultValue="default" className="meal-dropdown">
+      <div className="dropdown-container">
+        <select defaultValue="default" className="styled-dropdown">
           <option value="default" disabled>
             Select a meal
           </option>
@@ -36,7 +37,7 @@ function App() {
         </select>
       </div>
 
-      {/* ✅ Dietary options section */}
+      {/* Dietary options section */}
       <div style={styles.container}>
         {dietaryOptions.map((label, index) => (
           <label key={index} style={styles.label}>
