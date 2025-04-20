@@ -9,6 +9,8 @@ function App() {
     'No Peanuts', 'No Wheat', 'No Soybean', 'No Seasme',
   ];
 
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  
   const handleCheckboxChange = (option) => {
     setSelectedOptions(prev =>
       prev.includes(option)
