@@ -10,7 +10,7 @@ function App() {
   ];
 
   const [selectedOptions, setSelectedOptions] = useState([]);
-  
+
   const handleCheckboxChange = (option) => {
     setSelectedOptions(prev =>
       prev.includes(option)
@@ -18,6 +18,19 @@ function App() {
         : [...prev, option]
     );
   };
+
+  const [inputText, setInputText] = useState('');
+  const [storedValues, setStoredValues] = useState([]);
+
+  const storeValues = () => {
+    const values = inputText
+      .split(',')
+      .map(val => val.trim())
+      .filter(val => val.length > 0);
+    setStoredValues(values);
+    console.log('Stored values:', values);
+  };
+
 
   return (
     <div className="App">
@@ -58,8 +71,21 @@ function App() {
           </label>
         ))}
       </div>
+      <div className="ingredient-input-container">
+        <label htmlFor="data-input">Enter ingredients (comma-separated):</label>
+        <input
+          type="text"
+          id="data-input"
+          placeholder="e.g. apple, banana, orange"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
+        <button onClick={storeValues} className="submit-button">Submit</button>
+      </div>
     </div>
   );
 }
+
+
 
 export default App;
