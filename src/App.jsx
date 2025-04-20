@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [selectedRestaurant, setSelectedRestaurant] = useState('');
+  const [selectedRestaurant, setSelectedRestaurant] = useState('default');
   const [selectedMeal, setSelectedMeal] = useState('');
   const [count, setCount] = useState(0)
+  const [emscriptenModule, setEmscriptenModule] = useState(null);
+
   const dietaryOptions = [
     'Vegetarian', 'Vegan', 'Gluten Free', 'No Milk',
     'No eggs', 'No Fish', 'No Shellfish', 'No Tree Nuts',
@@ -33,6 +35,32 @@ function App() {
     console.log('Stored values:', values);
   };
 
+  useEffect(() => {
+    async function loadModule() {
+      const moduleFactory = (await import('../src/program.js')).default;
+      const mod = await moduleFactory({
+        locateFile: (file) => `/${file}`,
+      });
+
+      // Optional: capture C++ output in console or state
+      mod.print = (text) => console.log('[C++ output]', text);
+
+      setEmscriptenModule(mod);
+    }
+
+    loadModule();
+  }, []);
+
+  useEffect(() => {
+    if (!emscriptenModule || selectedRestaurant === 'default') return;
+  
+    const args = ['program', selectedRestaurant.toLowerCase()];
+    console.log('Calling C++ with args:', args);
+  
+    emscriptenModule.callMain(args);
+  }, [selectedRestaurant, emscriptenModule]);
+  
+
 
   return (
     <div className="App">
@@ -41,13 +69,14 @@ function App() {
       <h2 className="page-title">Select your meal!</h2>
 
       <div className="dropdown-container">
-        <select value={selectedRestaurant} onChange={(e) => setSelectedRestaurant(e.target.value)} className="styled-dropdown">
-          <option value="default" disabled>
-            Select a restaurant
-          </option>
-          <option value="glasgow">Glasgow</option>
-          <option value="lothian">Lothian</option>
-        </select>
+      <select value={selectedRestaurant} onChange={(e) => setSelectedRestaurant(e.target.value)} className="styled-dropdown">
+        <option value="default" disabled>
+          Select a restaurant
+        </option>
+        <option value="glasgow">Glasgow</option>
+        <option value="lothian">Lothian</option>
+      </select>
+
       </div>
 
       <div className="dropdown-container">
