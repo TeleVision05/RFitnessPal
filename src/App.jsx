@@ -6,6 +6,8 @@ function App() {
   const [selectedMeal, setSelectedMeal] = useState('');
   const [count, setCount] = useState(0)
   const [emscriptenModule, setEmscriptenModule] = useState(null);
+  const [cppOutput, setCppOutput] = useState('');
+
 
   const dietaryOptions = [
     'Vegetarian', 'Vegan', 'Gluten Free', 'No Milk',
@@ -43,7 +45,11 @@ function App() {
       });
 
       // Optional: capture C++ output in console or state
-      mod.print = (text) => console.log('[C++ output]', text);
+      mod.print = (text) => {
+        setCppOutput("Sample text from C++: " + text);
+        // console.log('[C++ output]', text);
+        // setCppOutput(prev => prev + text + '\n');
+      };
 
       setEmscriptenModule(mod);
     }
@@ -54,12 +60,17 @@ function App() {
   useEffect(() => {
     if (!emscriptenModule || selectedRestaurant === 'default') return;
   
-    const args = ['program', selectedRestaurant.toLowerCase()];
-    console.log('Calling C++ with args:', args);
+    const result = emscriptenModule.ccall(
+      'getRestaurantInfo',
+      'string',
+      ['string'],
+      [selectedRestaurant.toLowerCase()]
+    );
   
-    emscriptenModule.callMain(args);
+    console.log('C++ says:', result);
+    setCppOutput(result); // Add this line to show result in UI
   }, [selectedRestaurant, emscriptenModule]);
-  
+
 
 
   return (
@@ -76,8 +87,13 @@ function App() {
         <option value="glasgow">Glasgow</option>
         <option value="lothian">Lothian</option>
       </select>
-
       </div>
+
+      {cppOutput && (
+        <div className="cpp-output-box" style={{ border: '1px solid black', padding: '1rem', marginTop: '1rem', backgroundColor: '#f9f9f9' }}>
+          <p>{cppOutput}</p>
+        </div>
+      )}
 
       <div className="dropdown-container">
         <select value={selectedMeal} onChange={(e) => setSelectedMeal(e.target.value)} className="styled-dropdown">
